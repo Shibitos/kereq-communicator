@@ -10,6 +10,7 @@ public class WebSocketSecurityConfig extends AbstractSecurityWebSocketMessageBro
     @Override
     protected void configureInbound(MessageSecurityMetadataSourceRegistry messages) {
         //messages.anyMessage().authenticated();
+        //TODO: test if in current situation requests without jwt will be rejected
     }
 
     @Override

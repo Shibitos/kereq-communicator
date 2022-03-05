@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JWTService jwtService;
     private final String frontendUrl;
 
-    public SecurityConfig(JWTService jwtService, @Value("frontend.url") String frontendUrl) {
+    public SecurityConfig(JWTService jwtService, @Value("${frontend.url}") String frontendUrl) {
         this.jwtService = jwtService;
         this.frontendUrl = frontendUrl;
     }

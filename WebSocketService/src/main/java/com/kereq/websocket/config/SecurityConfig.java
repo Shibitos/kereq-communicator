@@ -10,7 +10,7 @@ public class SecurityConfig extends com.kereq.common.config.SecurityConfig {
 
     private final JWTService jwtService;
 
-    public SecurityConfig(JWTService jwtService, @Value("frontend.url") String frontendUrl) {
+    public SecurityConfig(JWTService jwtService, @Value("${frontend.url}") String frontendUrl) {
         super(jwtService, frontendUrl);
         this.jwtService = jwtService;
     }

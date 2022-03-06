@@ -32,7 +32,8 @@ public class ConnectionEventDTO implements Serializable {
 
     public enum Type {
         CONNECT("C"),
-        DISCONNECT("D");
+        DISCONNECT("D"),
+        REMOVAL("R");
 
         Type(String code) {
             this.code = code;

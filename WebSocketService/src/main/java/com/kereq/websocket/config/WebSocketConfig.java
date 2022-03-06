@@ -36,9 +36,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Value("${endpoint}")
     private String endpoint;
 
-    @Value("${destination.prefix}")
-    private String destinationPrefix;
-
     @Value("${frontend.url}")
     private String frontendUrl;
 

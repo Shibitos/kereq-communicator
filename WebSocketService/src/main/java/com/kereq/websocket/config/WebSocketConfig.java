@@ -39,9 +39,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Value("${destination.prefix}")
     private String destinationPrefix;
 
-    @Value("${stomp.broker.relay}")
-    private String stompBrokerRelay;
-
     @Value("${frontend.url}")
     private String frontendUrl;
 
@@ -51,11 +48,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(final MessageBrokerRegistry config) {
         config
-                .enableStompBrokerRelay(stompBrokerRelay)
+                .enableStompBrokerRelay("/topic/", "/queue/")
                 .setRelayHost(host).setRelayPort(port)
                 .setSystemLogin(userName).setSystemPasscode(password)
                 .setClientLogin(userName).setClientPasscode(password);
-        config.setApplicationDestinationPrefixes(destinationPrefix);
     }
 
     @Override

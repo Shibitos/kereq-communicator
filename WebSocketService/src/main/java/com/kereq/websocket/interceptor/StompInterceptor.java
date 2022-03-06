@@ -38,8 +38,8 @@ public class StompInterceptor implements ChannelInterceptor {
                 DecodedJWT decodedJWT = jwtService.verifyToken(token.get().replace(TOKEN_PREFIX, ""));
                 String email = decodedJWT.getSubject();
                 if (email != null) {
-                    UserDTO userDetails = new UserDTO(decodedJWT.getClaim("id").asLong(), email, decodedJWT.getClaim("roles").asList(String.class));
-                    SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities()));
+                    UserDTO user = new UserDTO(decodedJWT.getClaim("id").asLong(), email, decodedJWT.getClaim("roles").asList(String.class));
+                    SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities()));
                     accessor.setUser((Principal) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
                 }
             }

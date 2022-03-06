@@ -14,7 +14,7 @@ public class RabbitMQConfig {
 
     @Bean
     Queue connectionsQueue() {
-        return new Queue(QueueName.CONNECTIONS_WEBSOCKET, false);
+        return new Queue(QueueName.CONNECTIONS_WEBSOCKET, false); //TODO: different queue for every instance?
     }
 
     @Bean

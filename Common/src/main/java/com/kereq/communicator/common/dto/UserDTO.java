@@ -29,6 +29,6 @@ public class UserDTO implements Principal {
 
     @Override
     public String getName() {
-        return email;
+        return String.valueOf(id);
     }
 }

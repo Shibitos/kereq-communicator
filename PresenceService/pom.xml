@@ -8,9 +8,9 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.kereq.communicator</groupId>
-	<artifactId>dispenser-service</artifactId>
+	<artifactId>presence-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>dispenser-service</name>
+	<name>presence-service</name>
 	<properties>
 		<java.version>11</java.version>
 		<log4j2.version>2.17.1</log4j2.version>

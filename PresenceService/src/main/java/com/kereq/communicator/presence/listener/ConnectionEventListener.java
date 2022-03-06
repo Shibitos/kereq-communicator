@@ -1,15 +1,15 @@
-package com.kereq.communicator.dispenser.listener;
+package com.kereq.communicator.presence.listener;
 
 import com.kereq.communicator.common.constant.QueueName;
-import com.kereq.communicator.dispenser.service.ConnectionHandlerService;
+import com.kereq.communicator.presence.service.ConnectionHandlerService;
 import com.kereq.communicator.shared.dto.ConnectionEventDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-@Component
 @Slf4j
+@Component
 public class ConnectionEventListener {
 
     private final ConnectionHandlerService connectionHandlerService;
@@ -18,7 +18,7 @@ public class ConnectionEventListener {
         this.connectionHandlerService = connectionHandlerService;
     }
 
-    @RabbitListener(queues = QueueName.CONNECTIONS)
+    @RabbitListener(queues = QueueName.CONNECTIONS_PRESENCE)
     public void onMessage(@Payload ConnectionEventDTO connectionEvent) {
         if (ConnectionEventDTO.Type.CONNECT.equals(connectionEvent.getType())) {
             connectionHandlerService.handleConnection(connectionEvent);

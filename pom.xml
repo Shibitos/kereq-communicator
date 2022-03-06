@@ -17,7 +17,7 @@
         <module>Discovery</module>
         <module>Gateway</module>
         <module>ChatService</module>
-		<module>DispenserService</module>
+		<module>PresenceService</module>
 		<module>WebSocketService</module>
     </modules>
 </project>

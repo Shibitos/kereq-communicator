@@ -1,4 +1,4 @@
-package com.kereq.communicator.dispenser;
+package com.kereq.communicator.presence;
 
 import com.kereq.communicator.common.config.SecurityConfig;
 import org.springframework.boot.SpringApplication;
@@ -15,9 +15,9 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableFeignClients
 @EnableMongoAuditing
 @EnableMongoRepositories
-public class DispenserApplication {
+public class PresenceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DispenserApplication.class, args);
+		SpringApplication.run(PresenceApplication.class, args);
 	}
 }

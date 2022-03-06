@@ -1,4 +1,4 @@
-package com.kereq.communicator.dispenser.config;
+package com.kereq.communicator.presence.config;
 
 public class MongoConfig
 //        extends AbstractMongoClientConfiguration

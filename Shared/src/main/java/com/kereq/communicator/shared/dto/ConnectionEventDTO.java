@@ -1,22 +1,34 @@
 package com.kereq.communicator.shared.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@AllArgsConstructor
 @Getter
 public class ConnectionEventDTO implements Serializable {
 
     private static final long serialVersionUID = -7191952766031734303L;
 
-    private Type type;
+    private final Type type;
 
-    private long userId;
+    private final long userId;
+
+    private long recipientId;
 
     private String instanceId;
+
+    public ConnectionEventDTO(Type type, long userId, String instanceId) {
+        this.type = type;
+        this.userId = userId;
+        this.instanceId = instanceId;
+    }
+
+    public ConnectionEventDTO(Type type, long userId, long recipientId) {
+        this.type = type;
+        this.userId = userId;
+        this.recipientId = recipientId;
+    }
 
     public enum Type {
         CONNECT("C"),

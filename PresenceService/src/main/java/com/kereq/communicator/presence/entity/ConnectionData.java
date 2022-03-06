@@ -1,4 +1,4 @@
-package com.kereq.communicator.dispenser.entity;
+package com.kereq.communicator.presence.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

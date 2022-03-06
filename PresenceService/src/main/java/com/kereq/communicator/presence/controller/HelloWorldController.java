@@ -1,4 +1,4 @@
-package com.kereq.communicator.dispenser.controller;
+package com.kereq.communicator.presence.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

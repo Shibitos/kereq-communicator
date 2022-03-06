@@ -1,8 +1,8 @@
-package com.kereq.communicator.dispenser.service;
+package com.kereq.communicator.presence.service;
 
-import com.kereq.communicator.dispenser.entity.ConnectionData;
-import com.kereq.communicator.dispenser.repository.ConnectionRepository;
-import com.kereq.communicator.dispenser.sender.ConnectionBackendSender;
+import com.kereq.communicator.presence.entity.ConnectionData;
+import com.kereq.communicator.presence.repository.ConnectionRepository;
+import com.kereq.communicator.presence.sender.ConnectionBackendSender;
 import com.kereq.communicator.shared.dto.ConnectionEventDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,9 +25,13 @@ public class ConnectionHandlerService {
         if (!connectionRepository.existsByUserIdAndInstanceId(connectionEvent.getUserId(),
                 connectionEvent.getInstanceId())) {
             log.info("Adding new connection ({}: {})", connectionEvent.getInstanceId(), connectionEvent.getUserId());
+            boolean existsConnection = connectionRepository.existsByUserId(connectionEvent.getUserId());
             ConnectionData connectionData = new ConnectionData(connectionEvent.getUserId(), connectionEvent.getInstanceId());
             connectionRepository.save(connectionData);
-            connectionBackendSender.send(connectionEvent); //TODO: send to websocket queue to alert friends?
+            if (!existsConnection) {
+                log.info("Sending new connection to backend ({})", connectionEvent.getUserId());
+                connectionBackendSender.send(connectionEvent);
+            }
         }
     }
 
@@ -42,6 +46,9 @@ public class ConnectionHandlerService {
                 throw new NullPointerException(); //TODO: cust
             }
             connectionRepository.delete(connectionData);
+        }
+        if (!connectionRepository.existsByUserId(connectionEvent.getUserId())) {
+            log.info("Sending new disconnection to backend ({})", connectionEvent.getUserId());
             connectionBackendSender.send(connectionEvent);
         }
     }

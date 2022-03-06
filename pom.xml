@@ -12,6 +12,7 @@
 
     <modules>
 		<module>Common</module>
+		<module>Shared</module>
 		<module>ConfigurationService</module>
         <module>Discovery</module>
         <module>Gateway</module>

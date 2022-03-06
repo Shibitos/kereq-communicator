@@ -1,14 +1,11 @@
 package com.kereq.communicator.dispenser.service;
 
-import com.kereq.communicator.common.dto.ConnectionEventDTO;
 import com.kereq.communicator.dispenser.entity.ConnectionData;
 import com.kereq.communicator.dispenser.repository.ConnectionRepository;
 import com.kereq.communicator.dispenser.sender.ConnectionBackendSender;
+import com.kereq.communicator.shared.dto.ConnectionEventDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Slf4j
 @Service
@@ -30,7 +27,7 @@ public class ConnectionHandlerService {
             log.info("Adding new connection ({}: {})", connectionEvent.getInstanceId(), connectionEvent.getUserId());
             ConnectionData connectionData = new ConnectionData(connectionEvent.getUserId(), connectionEvent.getInstanceId());
             connectionRepository.save(connectionData);
-            connectionBackendSender.send(connectionEvent);
+            connectionBackendSender.send(connectionEvent); //TODO: send to websocket queue to alert friends?
         }
     }
 

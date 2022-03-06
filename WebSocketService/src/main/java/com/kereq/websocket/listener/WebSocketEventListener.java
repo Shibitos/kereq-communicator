@@ -1,7 +1,7 @@
 package com.kereq.websocket.listener;
 
-import com.kereq.communicator.common.dto.ConnectionEventDTO;
 import com.kereq.communicator.common.dto.UserDTO;
+import com.kereq.communicator.shared.dto.ConnectionEventDTO;
 import com.kereq.websocket.sender.ConnectionEventSender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

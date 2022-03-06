@@ -1,4 +1,4 @@
-package com.kereq.communicator.common.dto;
+package com.kereq.communicator.shared.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

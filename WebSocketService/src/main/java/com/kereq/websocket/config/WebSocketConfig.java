@@ -33,8 +33,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Value("${spring.rabbitmq.stomp-port}")
     private int port;
 
-    @Value("${endpoint}")
+    @Value("${ws.endpoint}")
     private String endpoint;
+
+    @Value("${ws.destination.prefix}")
+    private String wsDestinationPrefix;
 
     @Value("${frontend.url}")
     private String frontendUrl;
@@ -49,6 +52,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                 .setRelayHost(host).setRelayPort(port)
                 .setSystemLogin(userName).setSystemPasscode(password)
                 .setClientLogin(userName).setClientPasscode(password);
+        //config.setApplicationDestinationPrefixes(wsDestinationPrefix);
     }
 
     @Override

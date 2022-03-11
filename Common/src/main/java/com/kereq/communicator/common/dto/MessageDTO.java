@@ -3,6 +3,7 @@ package com.kereq.communicator.common.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class MessageDTO implements Serializable {
 
     private static final long serialVersionUID = 7334460075840016146L;

@@ -1,6 +1,8 @@
 package com.kereq.communicator.chat.controller;
 
+import com.kereq.communicator.chat.service.ConversationService;
 import com.kereq.communicator.chat.service.MessageStorageService;
+import com.kereq.communicator.common.dto.ConversationDTO;
 import com.kereq.communicator.common.dto.MessageDTO;
 import com.kereq.communicator.common.dto.UserDTO;
 import org.modelmapper.ModelMapper;
@@ -20,10 +22,13 @@ public class ChatController {
 
 	private final MessageStorageService messageStorageService;
 
+	private final ConversationService conversationService;
+
 	private final ModelMapper modelMapper;
 
-	public ChatController(MessageStorageService messageStorageService, ModelMapper modelMapper) {
+	public ChatController(MessageStorageService messageStorageService, ConversationService conversationService, ModelMapper modelMapper) {
 		this.messageStorageService = messageStorageService;
+		this.conversationService = conversationService;
 		this.modelMapper = modelMapper;
 	}
 
@@ -36,7 +41,9 @@ public class ChatController {
 	}
 
 	@GetMapping("/history")
-	public void getChatHistory(@AuthenticationPrincipal UserDTO user, Pageable page) {
-		throw new UnsupportedOperationException();
+	public Page<ConversationDTO> getChatHistory(@AuthenticationPrincipal UserDTO user,
+												@PageableDefault(sort = {"lastMessageDate"}, direction = Sort.Direction.DESC) Pageable page) {
+		return conversationService.getLastConversations(user.getId(), page)
+				.map(conversation -> modelMapper.map(conversation, ConversationDTO.class));
 	}
 }

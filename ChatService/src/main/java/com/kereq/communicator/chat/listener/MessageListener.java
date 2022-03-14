@@ -27,16 +27,20 @@ public class MessageListener {
     }
 
     @RabbitListener(queues = QueueName.MESSAGES_CHAT)
+//    @Transactional //TODO: make transactional (replica set needed)
     public void onMessage(@Payload MessageDTO messageDTO) {
         MessageData message = new MessageData(messageDTO.getSenderId(), messageDTO.getRecipientId(), messageDTO.getContent());
         message = messageStorageService.storeMessage(message);
         ConversationData conversation = conversationService.updateConversation(message);
+        message.setConversationId(conversation.getId());
+        messageStorageService.storeMessage(message); //TODO: remove after transactional
         MessageDTO newMessageDTO = new MessageDTO(message.getId(),
                 conversation.getId(),
                 message.getSenderId(),
                 message.getRecipientId(),
                 message.getContent(),
-                message.getSendDate()); //TODO: modelMapper?
+                message.getSendDate(),
+                message.isRead()); //TODO: modelMapper?
         messageWebsocketSender.send(newMessageDTO);
     }
 }

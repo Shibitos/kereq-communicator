@@ -16,8 +16,12 @@ public class MessageStorageService {
     }
 
     public MessageData storeMessage(MessageData message) {
-        //TODO: null check content, other vlaidation?
+        //TODO: null check content (ws too?), other validation?
         return messageRepository.save(message);
+    }
+
+    public boolean markMessageRead(String messageId, long recipientId) {
+        return messageRepository.markRead(messageId, recipientId);
     }
 
     public Page<MessageData> getMessagesFor(long userId, long recipientId, Pageable page) {

@@ -26,4 +26,19 @@ public class RabbitMQConfig {
     Binding messagesBinding(Queue messagesQueue, FanoutExchange messagesExchange) {
         return BindingBuilder.bind(messagesQueue).to(messagesExchange);
     }
+
+    @Bean
+    Queue eventsMessageQueue() {
+        return new Queue(QueueName.EVENTS_MESSAGE_CHAT, false);
+    }
+
+    @Bean
+    FanoutExchange eventsMessageExchange() {
+        return new FanoutExchange(ExchangeName.EVENTS_MESSAGE_CHAT);
+    }
+
+    @Bean
+    Binding eventsMessageBinding(Queue eventsMessageQueue, FanoutExchange eventsMessageExchange) {
+        return BindingBuilder.bind(eventsMessageQueue).to(eventsMessageExchange);
+    }
 }

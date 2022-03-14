@@ -26,8 +26,12 @@ public class MessageData {
 
     private String content;
 
+    private String conversationId;
+
     @CreatedDate
     private Date sendDate;
+
+    private boolean read = false;
 
     public MessageData(Long senderId, Long recipientId, String content) {
         this.senderId = senderId;

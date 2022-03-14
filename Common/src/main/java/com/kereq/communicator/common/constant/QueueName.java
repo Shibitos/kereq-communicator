@@ -5,9 +5,11 @@ public class QueueName {
     private QueueName() {
     }
 
-    public static final String CONNECTIONS_PRESENCE = "queue.connections.presence";
-    public static final String CONNECTIONS_WEBSOCKET = "exchange.connections.websocket";
+    public static final String CONNECTIONS_PRESENCE = "queue.presence.connections";
+    public static final String CONNECTIONS_WEBSOCKET = "queue.websocket.connections"; //TODO: change to events
 
-    public static final String MESSAGES_CHAT = "exchange.messages.chat";
-    public static final String MESSAGES_WEBSOCKET = "exchange.messages.websocket";
+    public static final String MESSAGES_CHAT = "queue.chat.messages";
+    public static final String MESSAGES_WEBSOCKET = "queue.websocket.messages";
+
+    public static final String EVENTS_MESSAGE_CHAT = "queue.chat.events.message";
 }

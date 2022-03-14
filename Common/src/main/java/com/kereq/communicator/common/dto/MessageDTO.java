@@ -27,13 +27,16 @@ public class MessageDTO implements Serializable {
 
     private Date sendDate;
 
-    public MessageDTO(String id, String conversationId, Long senderId, Long recipientId, String content, Date sendDate) {
+    private boolean read;
+
+    public MessageDTO(String id, String conversationId, Long senderId, Long recipientId, String content, Date sendDate, boolean read) {
         this.id = id;
         this.conversationId = conversationId;
         this.senderId = senderId;
         this.recipientId = recipientId;
         this.content = content;
         this.sendDate = sendDate;
+        this.read = read;
     }
 
     public MessageDTO(Long senderId, Long recipientId, String content) {

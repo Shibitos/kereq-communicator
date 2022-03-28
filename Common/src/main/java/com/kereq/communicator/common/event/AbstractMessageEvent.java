@@ -16,6 +16,6 @@ public abstract class AbstractMessageEvent implements Serializable {
         this.senderId = senderId;
     }
 
-    String messageId;
-    Long senderId;
+    protected String messageId;
+    protected Long senderId;
 }

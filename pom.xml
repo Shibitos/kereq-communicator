@@ -19,5 +19,6 @@
         <module>ChatService</module>
 		<module>PresenceService</module>
 		<module>WebSocketService</module>
+		<module>NotificationService</module>
     </modules>
 </project>

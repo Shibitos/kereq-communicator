@@ -48,4 +48,19 @@ public class RabbitMQConfig {
     Binding messagesBinding(Queue messagesQueue, FanoutExchange messagesExchange) {
         return BindingBuilder.bind(messagesQueue).to(messagesExchange);
     }
+
+    @Bean
+    Queue notificationsQueue() {
+        return new Queue(QueueName.NOTIFICATIONS_WEBSOCKET, false);
+    }
+
+    @Bean
+    FanoutExchange notificationsExchange() {
+        return new FanoutExchange(ExchangeName.NOTIFICATIONS_WEBSOCKET);
+    }
+
+    @Bean
+    Binding notificationsBinding(Queue notificationsQueue, FanoutExchange notificationsExchange) {
+        return BindingBuilder.bind(notificationsQueue).to(notificationsExchange);
+    }
 }

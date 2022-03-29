@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,6 +17,8 @@ public class NotificationData {
 
     @Id
     private String id;
+
+    private UUID uuid;
 
     private Long sourceUserId;
 
@@ -29,7 +32,8 @@ public class NotificationData {
 
     private boolean read = false;
 
-    public NotificationData(Long sourceUserId, Long recipientId, String title, String content, Date date) {
+    public NotificationData(UUID uuid, Long sourceUserId, Long recipientId, String title, String content, Date date) {
+        this.uuid = uuid;
         this.sourceUserId = sourceUserId;
         this.recipientId = recipientId;
         this.title = title;

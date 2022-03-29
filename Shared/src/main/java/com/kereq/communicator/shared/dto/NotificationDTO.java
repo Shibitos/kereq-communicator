@@ -1,14 +1,14 @@
 package com.kereq.communicator.shared.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import java.util.UUID;
 
-
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -17,6 +17,8 @@ public class NotificationDTO implements Serializable {
     private static final long serialVersionUID = -5816843143508919146L;
 
     private String id;
+
+    private UUID uuid;
 
     private Long sourceUserId;
 
@@ -45,18 +47,14 @@ public class NotificationDTO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NotificationDTO that = (NotificationDTO) o;
-        return read == that.read && Objects.equals(id, that.id) && Objects.equals(sourceUserId, that.sourceUserId) && Objects.equals(recipientId, that.recipientId) && Objects.equals(title, that.title) && Objects.equals(content, that.content) && Objects.equals(date, that.date);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, sourceUserId, recipientId, title, content, date, read);
+        return read == that.read && Objects.equals(id, that.id) && Objects.equals(uuid, that.uuid) && Objects.equals(sourceUserId, that.sourceUserId) && Objects.equals(recipientId, that.recipientId) && Objects.equals(title, that.title) && Objects.equals(content, that.content) && Objects.equals(date, that.date);
     }
 
     @Override
     public String toString() {
         return "NotificationDTO{" +
                 "id='" + id + '\'' +
+                ", uuid=" + uuid +
                 ", sourceUserId=" + sourceUserId +
                 ", recipientId=" + recipientId +
                 ", title='" + title + '\'' +
@@ -64,5 +62,10 @@ public class NotificationDTO implements Serializable {
                 ", date=" + date +
                 ", read=" + read +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, uuid, sourceUserId, recipientId, title, content, date, read);
     }
 }

@@ -12,7 +12,7 @@ public class QueueName {
     public static final String MESSAGES_WEBSOCKET = "queue.websocket.messages";
 
     public static final String NOTIFICATIONS_NOTIFICATION = "queue.notification.notifications";
-    public static final String NOTIFICATIONS_WEBSOCKET = "queue.websocket.messages";
+    public static final String NOTIFICATIONS_WEBSOCKET = "queue.websocket.notifications";
 
     public static final String EVENTS_MESSAGE_CHAT = "queue.chat.events.message";
     public static final String EVENTS_NOTIFICATION_NOTIFICATION = "queue.notification.events.notification";

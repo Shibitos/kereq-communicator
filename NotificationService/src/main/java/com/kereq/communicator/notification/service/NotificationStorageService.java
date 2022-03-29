@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class NotificationStorageService {
 
@@ -21,6 +23,10 @@ public class NotificationStorageService {
 
     public boolean markNotificationRead(String messageId, long recipientId) {
         return notificationRepository.markRead(messageId, recipientId);
+    }
+
+    public boolean existsByUuid(UUID uuid) {
+        return notificationRepository.existsByUuid(uuid);
     }
 
     public Page<NotificationData> getNotificationsFor(long recipientId, Pageable page) {

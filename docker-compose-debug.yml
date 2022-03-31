@@ -53,7 +53,7 @@ services:
     ports:
       - "9040:9040"
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo:mongo@db:5564/connections
+      - SPRING_DATA_MONGODB_URI=mongodb://kereq:kereq@db:5564/connections
 
   dispenser-service-db:
     image: 'mongo:5.0'
@@ -64,3 +64,24 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=kereq
       - MONGO_INITDB_ROOT_PASSWORD=kereq
       - MONGO_INITDB_DATABASE=connections
+
+  notification-service:
+    image: 'notification-service:latest'
+    container_name: notification-service
+    depends_on:
+      - notification-service-db
+    command: mvn spring-boot:run
+    ports:
+      - "9045:9045"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://kereq:kereq@db:5564/connections
+
+  notification-service-db:
+    image: 'mongo:5.0'
+    container_name: notification-service-db
+    ports:
+      - "5584:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=kereq
+      - MONGO_INITDB_ROOT_PASSWORD=kereq
+      - MONGO_INITDB_DATABASE=notifications

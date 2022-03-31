@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="PresenceApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+    <option name="MAIN_CLASS_NAME" value="com.kereq.communicator.presence.PresenceApplication" />
+    <module name="presence-service" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.kereq.communicator.presence.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2" />
+  </configuration>
+</component>

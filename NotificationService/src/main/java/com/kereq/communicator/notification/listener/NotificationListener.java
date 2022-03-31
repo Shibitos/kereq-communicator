@@ -28,7 +28,7 @@ public class NotificationListener {
         if (notificationDTO.getUuid() == null) {
             throw new NullPointerException("Empty notification UUID");
         }
-        if (notificationStorageService.existsByUuid(notificationDTO.getUuid())) {
+        if (notificationStorageService.existsByUuidAndRecipientId(notificationDTO.getUuid(), notificationDTO.getRecipientId())) {
             return;
         }
         NotificationData notification = new NotificationData(

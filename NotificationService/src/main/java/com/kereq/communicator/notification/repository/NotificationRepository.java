@@ -12,5 +12,5 @@ public interface NotificationRepository extends MongoRepository<NotificationData
 
     Page<NotificationData> findByRecipientId(@Param("recipientId") long recipientId, Pageable page);
 
-    boolean existsByUuid(UUID uuid);
+    boolean existsByUuidAndRecipientId(UUID uuid, long recipientId);
 }

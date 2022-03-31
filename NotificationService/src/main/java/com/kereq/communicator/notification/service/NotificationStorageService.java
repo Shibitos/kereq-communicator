@@ -25,8 +25,8 @@ public class NotificationStorageService {
         return notificationRepository.markRead(messageId, recipientId);
     }
 
-    public boolean existsByUuid(UUID uuid) {
-        return notificationRepository.existsByUuid(uuid);
+    public boolean existsByUuidAndRecipientId(UUID uuid, long recipientId) {
+        return notificationRepository.existsByUuidAndRecipientId(uuid, recipientId);
     }
 
     public Page<NotificationData> getNotificationsFor(long recipientId, Pageable page) {
